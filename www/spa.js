@@ -33,4 +33,14 @@ angular.module("festaspa", ["ngRoute"]).config(function($routeProvider){
 
   $routeProvider.otherwise("/listar-festas");
 
+}).controller("ListarConvidadosCtl",function(){
+
+}).controller("ListarFestasCtl",function(){
+  
+}).controller("DetalheConvidadoCtl",function(){
+  
+}).controller("DetalheFestaCtl",function(){
+  
+}).controller("ConvitesFestaCtl",function(){
+  
 });
