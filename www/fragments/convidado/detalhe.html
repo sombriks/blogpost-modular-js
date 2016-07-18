@@ -1,0 +1,13 @@
+<form class="well" ng-submit="dosave()">
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input class="form-control" required 
+    ng-model="ctl.convidado.nomeconvidado">
+  </div>
+  <div class="form-group">
+    <button type="submit" 
+    class="btn btn-primary">Salvar</button>
+    <button type="button" ng-show="ctl.convidado.idconvidado"
+    ng-click="dodel()" class="btn btn-danger">Excluir</button>
+  </div>
+</form>

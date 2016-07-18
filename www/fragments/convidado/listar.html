@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Festas</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="c in ctl.convidados">
+      <td>{{c.idconvidado}}</td>
+      <td>{{c.nomeconvidado}}</td>
+      <td>{{c.numfestas}}</td>
+      <td>
+        <a ng-href="#/detalhe-convidado/{{c.idconvidado}}">
+          <span class="fa fa-edit"></span>
+        </a>
+      </td>
+    </tr>
+    <tr ng-show="ctl.convidados.length == 0">
+      <td colspan="3">Não há convidados cadastrados</td>
+    </tr>
+  </tbody>
+</table>
