@@ -1,4 +1,4 @@
-<form class="well" ng-submit="dosave()">
+<form class="well" ng-submit="ctl.dosave()">
   <div class="form-group">
     <label for="nome">Nome</label>
     <input class="form-control" required 
@@ -8,6 +8,6 @@
     <button type="submit" 
     class="btn btn-primary">Salvar</button>
     <button type="button" ng-show="ctl.convidado.idconvidado"
-    ng-click="dodel()" class="btn btn-danger">Excluir</button>
+    ng-click="ctl.dodel()" class="btn btn-danger">Excluir</button>
   </div>
 </form>

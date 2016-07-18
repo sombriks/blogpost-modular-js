@@ -52,45 +52,95 @@ angular.module("festaspa", ["ngRoute"]).config(function ($routeProvider) {
       method: convidado.idconvidado ? "PUT" : "POST",
       data: JSON.stringify(convidado)
     });
-  },
-  this.del = function(idconvidado){
+  };
+  this.del = function (idconvidado) {
     return $http({
       url: "convidado/" + idconvidado,
       method: "DELETE"
     });
   };
+}).service("festaservice", function ($http) {
+  this.list = function () {
+    return $http({
+      url: "festa/list",
+      method: "GET"
+    });
+  };
+  this.find = function (idfesta) {
+    return $http({
+      url: "festa/" + idfesta,
+      method: "GET"
+    });
+  };
+  this.save = function (festa) {
+    return $http({
+      url: "festa/save",
+      method: festa.idfesta ? "PUT" : "POST",
+      data: JSON.stringify(festa)
+    });
+  };
+  this.del = function (idfesta) {
+    return $http({
+      url: "festa/" + idfesta,
+      method: "DELETE"
+    });
+  };
 }).controller("ListarConvidadosCtl", function (convidadoservice) {
-
   var self = this;
   this.convidados = [];
   convidadoservice.list().then(function (ret) {
     self.convidados = ret.data;
   });
-
-}).controller("ListarFestasCtl", function () {
-
+}).controller("ListarFestasCtl", function (festaservice) {
+  var self = this;
+  this.festas = [];
+  festaservice.list().then(function (ret) {
+    self.festas = ret.data;
+  });
 }).controller("DetalheConvidadoCtl", function ($routeParams, convidadoservice) {
   var self = this;
-  self.convidado={};
+  self.convidado = {};
   convidadoservice.find($routeParams.idconvidado).then(function (ret) {
     self.convidado = ret.data;
   });
   this.dosave = function () {
-    convidadoservice.save(self.convidado).then(function(ret){
+    convidadoservice.save(self.convidado).then(function (ret) {
       self.convidado = ret.data;
       alert("Convidado salvo com sucesso!");
     });
   };
-  this.dodel = function(){
-    if(confirm("Deseja realmente excluir o convidado?")){
-      convidadoservice.del(self.convidado.idconvidado).then(function(ret){
+  this.dodel = function () {
+    if (confirm("Deseja realmente excluir o convidado?")) {
+      convidadoservice.del(self.convidado.idconvidado).then(function (ret) {
         alert("Convidado excluído com sucesso!");
         self.convidado = {};
       });
     }
   };
-}).controller("DetalheFestaCtl", function () {
-
-}).controller("ConvitesFestaCtl", function () {
-
+}).controller("DetalheFestaCtl", function ($routeParams, festaservice) {
+  var self = this;
+  self.festa = {};
+  festaservice.find($routeParams.idfesta).then(function (ret) {
+    self.festa = ret.data;
+  });
+  this.dosave = function () {
+    festaservice.save(self.festa).then(function (ret) {
+      self.festa = ret.data;
+      alert("Festa salva com sucesso!");
+    });
+  };
+  this.dodel = function () {
+    if (confirm("Deseja realmente excluir o convidado?")) {
+      festaservice.del(self.festa.idfesta).then(function (ret) {
+        alert("Festa excluída com sucesso!");
+        self.festa = {};
+      });
+    }
+  };
+}).controller("ConvitesFestaCtl", function ($routeParams, festaservice, convidadoservice) {
+  var self = this;
+  self.festa = {};
+  festaservice.find($routeParams.idfesta).then(function (ret) {
+    self.festa = ret.data;
+  });
 });

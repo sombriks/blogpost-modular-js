@@ -1,6 +1,9 @@
 // imports 
 var express = require("express");
+var bodyParser = require("body-parser");
 var app = express();
+
+app.use(bodyParser.json());
 
 var cfg = require("./knexfile");
 var knex = require("knex")(cfg.development);
@@ -22,7 +25,9 @@ app.get("/festa/:idfesta", function (req, res) {
 
 app.post("/festa/save", function (req, res) {
   var festa = req.body;
-  knex("festa").insert(festa, "idfesta").then(function (ret) {
+  knex("festa").insert({
+    nomefesta: festa.nomefesta
+  }, "idfesta").then(function (ret) {
     festa.idfesta = ret[0];
     res.send(festa);
   });
@@ -30,7 +35,9 @@ app.post("/festa/save", function (req, res) {
 
 app.put("/festa/save", function (req, res) {
   var festa = req.body;
-  knex("festa").update(festa).where({ idfesta: festa.idfesta }).then(function (ret) {
+  knex("festa").update({
+    nomefesta: festa.nomefesta
+  }).where({ idfesta: festa.idfesta }).then(function (ret) {
     res.send(festa);
   })
 });
