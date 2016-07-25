@@ -1,9 +1,10 @@
 // import angular
 import angular from 'angular';
 import ngRoute from 'angular-route';
-
+console.debug(ngRoute);
 // define module and require router
 angular.module("festaspa", ["ngRoute"]);
+
 
 import detalheconvidado from  "./convidado/detalhe";
 import listaconvidado from "./convidado/listar";

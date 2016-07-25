@@ -12883,7 +12883,6 @@ $__System.register('1', ['3', '5', '6', '7', '8', '9', 'a', 'b', 'c'], function 
   // require pode em qualquer altura
   'use strict';
 
-  // define module and require router
   var angular, ngRoute, detalheconvidado, listaconvidado, convitesfesta, detalhefesta, listarfesta, serviceconvidado, servicefesta, ctl, i, mod, svc, mod;
   return {
     setters: [function (_) {
@@ -12906,6 +12905,8 @@ $__System.register('1', ['3', '5', '6', '7', '8', '9', 'a', 'b', 'c'], function 
       servicefesta = _c['default'];
     }],
     execute: function () {
+      console.debug(ngRoute);
+      // define module and require router
       angular.module("festaspa", ["ngRoute"]);
 
       ctl = [detalheconvidado, listaconvidado, convitesfesta, detalhefesta, listarfesta];
