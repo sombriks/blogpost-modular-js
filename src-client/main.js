@@ -1,5 +1,7 @@
-// define angular module
-angular.module("festaspa", ["ngRoute"]);
+// import angular
+var angular = require("angular");
+// define module and require router
+angular.module("festaspa", [require("angular-route")]);
 
 var detalheconvidado = require("./convidado/detalhe");
 var listaconvidado = require("./convidado/listar");
