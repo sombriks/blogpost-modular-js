@@ -1,13 +1,15 @@
 // import angular
-var angular = require("angular");
-// define module and require router
-angular.module("festaspa", [require("angular-route")]);
+import angular from 'angular';
+import ngRoute from 'angular-route';
 
-var detalheconvidado = require("./convidado/detalhe");
-var listaconvidado = require("./convidado/listar");
-var convitesfesta = require("./festa/convites");
-var detalhefesta = require("./festa/detalhe");
-var listarfesta = require("./festa/listar");
+// define module and require router
+angular.module("festaspa", ["ngRoute"]);
+
+import detalheconvidado from  "./convidado/detalhe";
+import listaconvidado from "./convidado/listar";
+import convitesfesta from "./festa/convites";
+import detalhefesta from "./festa/detalhe";
+import listarfesta from "./festa/listar";
 
 var ctl = [detalheconvidado, listaconvidado, convitesfesta, detalhefesta, listarfesta];
 
@@ -31,8 +33,8 @@ angular.module("festaspa").config(function ($routeProvider) {
 });
 
 // require pode em qualquer altura
-var serviceconvidado = require("./convidado/service");
-var servicefesta = require("./festa/service");
+import serviceconvidado from "./convidado/service";
+import servicefesta from "./festa/service";
 
 var svc = [serviceconvidado, servicefesta];
 i = svc.length;
